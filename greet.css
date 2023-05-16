@@ -11,7 +11,9 @@
     input[type="button"].button-primary {
       color: #FFF;
       background-color: orangered;
-      border-color: orange; }
+      border-color: orange; 
+      border-radius: 1em;
+}
 
 .errorMessage{
     color:red
