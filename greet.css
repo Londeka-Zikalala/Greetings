@@ -1,0 +1,23 @@
+
+
+.languages{
+    display: inline-flex;
+    margin: 2%;
+}
+
+
+    .button-primary,
+    input[type="text"].button-primary,
+    input[type="button"].button-primary {
+      color: #FFF;
+      background-color: orangered;
+      border-color: orange; }
+
+.errorMessage{
+    color:red
+
+}
+
+.message{
+
+}
