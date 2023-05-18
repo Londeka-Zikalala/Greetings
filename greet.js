@@ -6,46 +6,43 @@ function Greeting(){
     var sothoGreetings = 0;
 
     function inputString(name){
-       return typeof  name === 'String'
+       return typeof  name === 'string' && name.trim()
     }
 
     function swatiGreet(name){
-        if(inputString(name)){
-            swatiGreetings++
-            return 'Sawubona' + name;
+        if (inputString(name)) {
+            if (!alreadyGreeted[name]) {
+              alreadyGreeted[name] = true; 
+              swatiGreetings++;  
+            }
+            return 'Sawubona ' + name;
+          } else {
+            return 'Enter a valid name';
+          }
         }
-        else if(!inputString(name)){
-            return 'Enter a valid name'
-        }
-        else if(alreadyGreeted[name]){
-            return 'Enter a different name'
-        }
-    }
+    
         function englishGreet(name){
-            if(inputString(name)){
-                englishGreetings++;
-                return 'Sawubona' + name;
+            if (inputString(name)) {
+                if (!alreadyGreeted[name]) {
+                  alreadyGreeted[name] = true; 
+                  englishGreetings++;  
+                }
+                return 'Hello ' + name;
+              } else {
+                return 'Enter a valid name';
+              }
             
-            }
-            else if(!inputString(name)){
-                return 'Enter a valid name'
-            }
-            else if(alreadyGreeted[name]){
-                return 'Enter a different name'
-            }
         }
         function sothoGreet(name){
-            if(inputString(name)){
-                sothoGreetings++;
-                alreadyGreeted.push(name);
-                return 'Dumela' + name;
-            }
-            else if(!inputString(name)){
-                return 'Enter a valid name'
-            }
-            else if(alreadyGreeted[name]){
-                return 'Enter a different name'
-            }
+            if (inputString(name)) {
+                if (!alreadyGreeted[name]) {
+                  alreadyGreeted[name] = true; 
+                  sothoGreetings++;  
+                }
+                return 'Dumela ' + name;
+              } else {
+                return 'Enter a valid name';
+              }
         }
     
         function getSwatiGreetings(){
@@ -58,6 +55,10 @@ function Greeting(){
 
         function getSothoGreetings(){
             return sothoGreetings
+        }
+        function getAllGreetings(){
+            var allGreetings = sothoGreetings + swatiGreetings + englishGreetings;
+            return allGreetings;
         }
         function reset(){
             swatiGreetings = 0;
@@ -74,6 +75,62 @@ function Greeting(){
         getSwatiGreetings,
         getEnglishGreetings,
         getSothoGreetings,
+        getAllGreetings,
         reset
     }
 }
+
+//DOM CODE
+//get references to HTML elements
+const errorMessageElement = document.querySelector('.errorMessage');
+const inputTextElement = document.querySelector('.input-box')
+const greetBtnElement = document.querySelector('.greetBtn')
+const resetBtnElement = document.querySelector('.resetButton')
+const chooseLanguageElement = document.querySelector('.chooseLanguageRadio')
+const greetMessageElement = document.querySelector('.message')
+
+// call the factory function
+
+const greet = Greeting();
+
+function greetDOM() {
+    var checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
+    if (checkedRadioBtn) {
+      const languages = checkedRadioBtn.value;
+      const name = inputTextElement.value;
+  
+      if (greet.inputString(name)) {
+        if (languages === "") {
+          errorMessageElement.innerHTML = 'Choose a language';
+          errorMessageElement.style.display = 'block';
+          
+        } else if (languages === 'Swati') {
+          greetMessageElement.innerHTML = greet.swatiGreet(name);
+        } else if (languages === 'English') {
+          greetMessageElement.innerHTML = greet.englishGreet(name);
+        } else if (languages === 'Sotho') {
+          greetMessageElement.innerHTML = greet.sothoGreet(name);
+        }
+      } else {
+        errorMessageElement.innerHTML = 'Enter a valid name';
+        errorMessageElement.style.display = 'block';
+    
+      }
+
+    } 
+  
+    errorMessageElement.classList.add('errorMessage');
+  }
+  
+  greetBtnElement.addEventListener('click', greetDOM);
+
+  
+  function theReset(){
+    greet.reset();
+    
+  inputTextElement.value = ''; 
+  errorMessageElement.style.display = 'none'; 
+  greetMessageElement.innerHTML = ''; 
+  }
+
+  resetBtnElement.addEventListener('click', theReset)
