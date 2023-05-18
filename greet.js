@@ -100,25 +100,20 @@ function greetDOM() {
       const name = inputTextElement.value;
   
       if (greet.inputString(name)) {
-        if (languages === "") {
-          errorMessageElement.innerHTML = 'Choose a language';
-          errorMessageElement.style.display = 'block';
-          
-        } else if (languages === 'Swati') {
+        if (languages === 'Swati') {
           greetMessageElement.innerHTML = greet.swatiGreet(name);
         } else if (languages === 'English') {
           greetMessageElement.innerHTML = greet.englishGreet(name);
         } else if (languages === 'Sotho') {
           greetMessageElement.innerHTML = greet.sothoGreet(name);
         }
-      } else {
-        errorMessageElement.innerHTML = 'Enter a valid name';
-        errorMessageElement.style.display = 'block';
-    
-      }
+      } 
 
-    } 
-  
+    }
+     errorMessageElement.innerHTML = 'Enter a valid name';
+    
+    errorMessageElement.innerHTML = 'Choose a language';
+    
     errorMessageElement.classList.add('errorMessage');
   }
   
@@ -127,10 +122,14 @@ function greetDOM() {
   
   function theReset(){
     greet.reset();
-    
   inputTextElement.value = ''; 
   errorMessageElement.style.display = 'none'; 
   greetMessageElement.innerHTML = ''; 
+  const checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
+  if (checkedRadioBtn) {
+    checkedRadioBtn.checked = false;
+  }
+
   }
 
   resetBtnElement.addEventListener('click', theReset)
