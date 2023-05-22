@@ -1,0 +1,101 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: auto;
+  font-size: 100%;
+  
+
+.container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: floralwhite;
+   
+}
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15%;
+    margin-left: 15%;
+    padding: 15%;
+  }
+  
+  .col-2 {
+    width: 100%;
+    max-width: 45em;
+    padding: 1%;
+
+  }
+  a{
+    text-decoration: none;
+    color: burlywood;
+  }
+  /* Add any additional CSS styles for other elements as needed */
+  
+
+    .button-primary,
+    input[type="text"].button-primary,
+    input[type="button"].button-primary {
+      color: #FFF;
+      background-color: orangered;
+      border-color: orange; 
+      border-radius: 1em;
+}
+
+.errorMessage{
+    color:red
+
+}
+
+.message{
+    color: darkslategrey;
+}
+
+.languages{
+    display: inline-flex;
+    margin: 2%;
+}
+
+/*SMALL SCREENS*/
+
+
+@media only screen and (max-width: 34em) {
+    .container {
+      width: 100%;
+    }
+    .col-2{
+        max-width: 70%;
+    }
+  }
+
+  /*MED SCREENS */
+  
+  @media only screen and (min-width: 35em) {
+    .container {
+      max-width: 80%
+    }
+    .col-2{
+        max-width: 90%;
+    }
+  }
+  /*LARGE SCREENS*/
+  @media only screen and (min-width: 55em) {
+    .container {
+      max-width: 85%;
+    }
+
+    .col-2{
+        max-width: 100%;
+    }
+  }
+  

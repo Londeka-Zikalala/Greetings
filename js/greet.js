@@ -62,7 +62,7 @@ function Greeting(){
         }
         function reset(){
             swatiGreetings = 0;
-            englishGreetings = 0;
+          
             sothoGreetings = 0;
             return swatiGreetings, englishGreetings, sothoGreetings 
             
@@ -78,58 +78,4 @@ function Greeting(){
         getAllGreetings,
         reset
     }
-}
-
-//DOM CODE
-//get references to HTML elements
-const errorMessageElement = document.querySelector('.errorMessage');
-const inputTextElement = document.querySelector('.input-box')
-const greetBtnElement = document.querySelector('.greetBtn')
-const resetBtnElement = document.querySelector('.resetButton')
-const chooseLanguageElement = document.querySelector('.chooseLanguageRadio')
-const greetMessageElement = document.querySelector('.message')
-
-// call the factory function
-
-const greet = Greeting();
-
-function greetDOM() {
-    var checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
-    if (checkedRadioBtn) {
-      const languages = checkedRadioBtn.value;
-      const name = inputTextElement.value;
-  
-      if (greet.inputString(name)) {
-        if (languages === 'Swati') {
-          greetMessageElement.innerHTML = greet.swatiGreet(name);
-        } else if (languages === 'English') {
-          greetMessageElement.innerHTML = greet.englishGreet(name);
-        } else if (languages === 'Sotho') {
-          greetMessageElement.innerHTML = greet.sothoGreet(name);
-        }
-      } 
-
-    }
-     errorMessageElement.innerHTML = 'Enter a valid name';
-    
-    errorMessageElement.innerHTML = 'Choose a language';
-    
-    errorMessageElement.classList.add('errorMessage');
   }
-  
-  greetBtnElement.addEventListener('click', greetDOM);
-
-  
-  function theReset(){
-    greet.reset();
-  inputTextElement.value = ''; 
-  errorMessageElement.style.display = 'none'; 
-  greetMessageElement.innerHTML = ''; 
-  const checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
-  if (checkedRadioBtn) {
-    checkedRadioBtn.checked = false;
-  }
-
-  }
-
-  resetBtnElement.addEventListener('click', theReset)
