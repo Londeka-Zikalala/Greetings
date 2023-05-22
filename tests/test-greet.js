@@ -94,11 +94,6 @@ describe('error messages', function(){
 
         assert.equal(greeter.englishGreet(1234), 'Enter a valid name')
     })
-        
-    it('should give an error message of "Choose a language" when the greet button is clicled without selecting a language', function(){
-        
-
-    })
 
 
 })

@@ -1,48 +1,46 @@
 function Greeting(){
-    var name = "";
     var alreadyGreeted = {};
     var swatiGreetings= 0;
     var englishGreetings = 0;
     var sothoGreetings = 0;
+    var allGreetings = 0;
 
     function inputString(name){
-       return typeof  name === 'string' && name.trim()
+       return typeof  name === 'string' && name.trim() !== ""
     }
 
     function swatiGreet(name){
-        if (inputString(name)) {
-            if (!alreadyGreeted[name]) {
-              alreadyGreeted[name] = true; 
-              swatiGreetings++;  
-            }
-            return 'Sawubona ' + name;
-          } else {
-            return 'Enter a valid name';
-          }
+      if (!inputString(name)) {
+        return 'Enter a valid name';}
+
+          if (!alreadyGreeted[name]) {
+            alreadyGreeted[name] = true; 
+            swatiGreetings++;  
+          return 'Sawubona ' + name  
+        }
         }
     
         function englishGreet(name){
-            if (inputString(name)) {
+
+            if (!inputString(name)) {
+              return 'Enter a valid name';}
+
                 if (!alreadyGreeted[name]) {
                   alreadyGreeted[name] = true; 
                   englishGreetings++;  
-                }
-                return 'Hello ' + name;
-              } else {
-                return 'Enter a valid name';
+                return 'Hello ' + name  
               }
             
         }
         function sothoGreet(name){
-            if (inputString(name)) {
-                if (!alreadyGreeted[name]) {
-                  alreadyGreeted[name] = true; 
-                  sothoGreetings++;  
-                }
-                return 'Dumela ' + name;
-              } else {
-                return 'Enter a valid name';
-              }
+          if (!inputString(name)) {
+            return 'Enter a valid name';}
+
+              if (!alreadyGreeted[name]) {
+                alreadyGreeted[name] = true; 
+                sothoGreetings++;  
+              return 'Dumela ' + name  
+            }
         }
     
         function getSwatiGreetings(){
@@ -57,13 +55,14 @@ function Greeting(){
             return sothoGreetings
         }
         function getAllGreetings(){
-            var allGreetings = sothoGreetings + swatiGreetings + englishGreetings;
+            allGreetings = sothoGreetings + swatiGreetings + englishGreetings;
             return allGreetings;
         }
         function reset(){
             swatiGreetings = 0;
-          
+            englishGreetings =0
             sothoGreetings = 0;
+            allGreetings = 0
             return swatiGreetings, englishGreetings, sothoGreetings 
             
         }
