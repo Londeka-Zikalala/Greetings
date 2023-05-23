@@ -16,7 +16,7 @@ function greetDOM() {
   const checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
   const name = inputTextElement.value.trim();
 
-  if(!checkedRadioBtn || !greet.inputString(name) ) {
+  if(!checkedRadioBtn || !greet.inputString(name)  ) {
     errorMessageElement.innerHTML = 'Choose a language and enter a valid string';
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
@@ -25,26 +25,25 @@ function greetDOM() {
     return;
   }
 
-  if (swatiLanguageElement.checked) {
-    greetMessageElement.innerHTML = greet.greetFunction(name, 'Swati');
-    counterElement.innerHTML = greet.getCounter();
-  } else if (englishLanguageElement.checked) {
-    greetMessageElement.innerHTML = greet.greetFunction(name, 'English');
-    counterElement.innerHTML = greet.getCounter();
-  } else if (sothoLanguageElement.checked) {
-    greetMessageElement.innerHTML = greet.greetFunction(name, 'Sotho');
-    counterElement.innerHTML = greet.getCounter();
-  }
-  
-
-  /*if (!greet.inputString(name)) {
-    errorMessageElement.innerHTML = 'Enter a valid name';
+  if(greet.greetedFunction(name, checkedRadioBtn.value)){
+    errorMessageElement.innerHTML = 'Already greeted ' + name + ' in ' + checkedRadioBtn.value;
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
       errorMessageElement.style.display = 'none';
     }, 2000);
     return;
-  }*/
+
+  } 
+  else{ if (swatiLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'Swati');
+  } else if (englishLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'English');
+  } else if (sothoLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'Sotho');
+  }
+  }
+  counterElement.innerHTML = greet.getCounter();
+  inputTextElement.value = '';
 
   // Update greeting counts in local storage
   const greetings = {

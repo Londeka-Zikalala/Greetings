@@ -50,8 +50,11 @@ body {
       background-color: orangered;
       border-color: orange; 
       border-radius: 1em;
+    
 }
-
+.buttons{
+  margin-left: 15%;
+}
 .errorMessage{
     color:red
 
