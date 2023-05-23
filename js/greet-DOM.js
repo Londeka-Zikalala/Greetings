@@ -25,8 +25,8 @@ function greetDOM() {
     return;
   }
 
-  if(greet.greetedFunction(name, checkedRadioBtn.value)){
-    errorMessageElement.innerHTML = 'Already greeted ' + name + ' in ' + checkedRadioBtn.value;
+  if(greet.greetedFunction(name)){
+    errorMessageElement.innerHTML = 'Already greeted ' + name;
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
       errorMessageElement.style.display = 'none';

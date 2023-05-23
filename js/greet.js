@@ -7,12 +7,12 @@ function Greeting() {
     return typeof name === 'string' && name.trim() !== '' && regex.test(name.trim()) ? name.toLowerCase() : '';
   }
 
-  function greetedFunction(name, language) {
-    if (alreadyGreeted[inputString(name)] && alreadyGreeted[inputString(name)][language]) {
-      return 'Name already greeted in ' + language;
+  function greetedFunction(name) {
+    if (alreadyGreeted[inputString(name)]) {
+      return 'Already greeted ' + name;
     } else {
       alreadyGreeted[inputString(name)] = alreadyGreeted[inputString(name)] || {};
-      alreadyGreeted[inputString(name)][language] = true;
+      alreadyGreeted[inputString(name)] = true;
       greetingsCounter++;
       return false;
     }
