@@ -5,9 +5,10 @@ function Greeting(){
     var sothoGreetings = 0;
     var allGreetings = 0;
 
-    function inputString(name){
-       return typeof  name === 'string' && name.trim() !== ""
+    function inputString(name) {
+      return typeof name === 'string' && name.trim() !== "" && name.trim().charAt(0).toUpperCase() + name.trim().slice(1).toLowerCase();
     }
+    
 
     function swatiGreet(name){
       if (!inputString(name)) {

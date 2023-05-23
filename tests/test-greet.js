@@ -3,10 +3,14 @@ describe('The greetings function', function(){
         var greeter = Greeting();
         let name = 'Londeka'
         let invalid = 256
-        assert.equal(greeter.inputString(name), true)
+        assert.equal(greeter.inputString(name), 'Londeka')
         assert.equal(greeter.inputString(invalid), false)
     })
-
+    it('should capitalize the first letter of a string', function(){
+        var greeter = Greeting();
+        let name = 'londeka'
+        assert.equal(greeter.inputString(name), 'Londeka')
+    })
     it('should greet any name in Swati', function(){
         var greeter = Greeting();
         assert.equal(greeter.swatiGreet('Londeka'), 'Sawubona Londeka')
@@ -98,13 +102,3 @@ describe('error messages', function(){
 
 })
 
-describe('The local storage', function(){
-
-    it('should keep a count of greetings in the local storage', function(){
-        
-    })
-it('should reset the greetings counter once the reset button is clicked', function(){
-        
-    })
-
-})
