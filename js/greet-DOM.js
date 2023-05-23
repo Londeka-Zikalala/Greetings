@@ -1,20 +1,23 @@
 // Get references to HTML elements
-const errorMessageElement = document.querySelector('.errorMessage');
-const inputTextElement = document.querySelector('.input-box');
-const greetBtnElement = document.querySelector('.greetBtn');
-const resetBtnElement = document.querySelector('.resetButton');
-const chooseLanguageElement = document.querySelector('.chooseLanguageRadio');
-const greetMessageElement = document.querySelector('.message');
-const counterElement = document.querySelector('.counter');
+let errorMessageElement = document.querySelector('.errorMessage');
+let inputTextElement = document.querySelector('.input-box');
+let greetBtnElement = document.querySelector('.greetBtn');
+let resetBtnElement = document.querySelector('.resetButton');
+let swatiLanguageElement = document.querySelector('.chooseSwatiRadio');
+let englishLanguageElement = document.querySelector('.chooseEnglishRadio');
+let sothoLanguageElement = document.querySelector('.chooseSothoRadio');
+let greetMessageElement = document.querySelector('.message');
+let counterElement = document.querySelector('.counter');
 
 // Call the factory function
 const greet = Greeting();
 
 function greetDOM() {
   const checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
+  const name = inputTextElement.value.trim();
 
-  if (!checkedRadioBtn) {
-    errorMessageElement.innerHTML = 'Choose a language';
+  if(!checkedRadioBtn || !greet.inputString(name) ) {
+    errorMessageElement.innerHTML = 'Choose a language and enter a valid string';
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
       errorMessageElement.style.display = 'none';
@@ -22,40 +25,32 @@ function greetDOM() {
     return;
   }
 
-  const languages = checkedRadioBtn.value;
-  const name = inputTextElement.value.trim();
+  if (swatiLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'Swati');
+    counterElement.innerHTML = greet.getCounter();
+  } else if (englishLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'English');
+    counterElement.innerHTML = greet.getCounter();
+  } else if (sothoLanguageElement.checked) {
+    greetMessageElement.innerHTML = greet.greetFunction(name, 'Sotho');
+    counterElement.innerHTML = greet.getCounter();
+  }
+  
 
-  if (!greet.inputString(name)) {
+  /*if (!greet.inputString(name)) {
     errorMessageElement.innerHTML = 'Enter a valid name';
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
       errorMessageElement.style.display = 'none';
     }, 2000);
     return;
-  }
-
-  errorMessageElement.style.display = 'none';
-
-  if (languages === 'Swati') {
-    greetMessageElement.innerHTML = greet.swatiGreet(name);
-    greet.getSwatiGreetings();
-    counterElement.innerHTML = greet.getAllGreetings();
-  } else if (languages === 'English') {
-    greetMessageElement.innerHTML = greet.englishGreet(name);
-    greet.getEnglishGreetings();
-    counterElement.innerHTML = greet.getAllGreetings();
-  } else if (languages === 'Sotho') {
-    greetMessageElement.innerHTML = greet.sothoGreet(name);
-    greet.getSothoGreetings();
-    counterElement.innerHTML = greet.getAllGreetings();
-  }
+  }*/
 
   // Update greeting counts in local storage
   const greetings = {
-    swatiGreetings: greet.getSwatiGreetings(),
-    englishGreetings: greet.getEnglishGreetings(),
-    sothoGreetings: greet.getSothoGreetings()
+    greetingsCounter: greet.getCounter(),
   };
+
   localStorage.setItem('greetings', JSON.stringify(greetings));
 }
 
@@ -64,10 +59,8 @@ function greetDOM() {
 const storedGreetings = localStorage.getItem('greetings');
 if (storedGreetings) {
   const parsedGreetings = JSON.parse(storedGreetings);
-  greet.swatiGreetings = parsedGreetings.swatiGreetings || 0;
-  greet.englishGreetings = parsedGreetings.englishGreetings || 0;
-  greet.sothoGreetings = parsedGreetings.sothoGreetings || 0;
-  counterElement.innerHTML = greet.getAllGreetings();
+  greet.greetingsCounter= parsedGreetings.greetingsCounter || 0;
+  counterElement.innerHTML = greet.getCounter();
 }
 
 

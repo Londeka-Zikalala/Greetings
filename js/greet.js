@@ -1,81 +1,43 @@
 function Greeting(){
     var alreadyGreeted = {};
-    var swatiGreetings= 0;
-    var englishGreetings = 0;
-    var sothoGreetings = 0;
-    var allGreetings = 0;
+    var greetingsCounter = 0;
 
     function inputString(name) {
-      return typeof name === 'string' && name.trim() !== "" && name.trim().charAt(0).toUpperCase() + name.trim().slice(1).toLowerCase();
+      const regex = /^[a-zA-Z]+$/;
+      return typeof name === 'string' && name.trim() !== '' && regex.test(name.trim());
     }
     
-
-    function swatiGreet(name){
-      if (!inputString(name)) {
-        return 'Enter a valid name';}
-
-          if (!alreadyGreeted[name]) {
-            alreadyGreeted[name] = true; 
-            swatiGreetings++;  
-          return 'Sawubona ' + name  
-        }
-        }
     
-        function englishGreet(name){
+  function greetFunction(name, language) {
+    if (!inputString(name) || language === "") {
+      return 'Select a language and enter a valid name';
+    }
+    if (!alreadyGreeted[inputString(name)] && language === 'Swati') {
+      greetingsCounter++;
+      return 'Sawubona ' + name;
+    } else if (!alreadyGreeted[inputString(name)] && language === 'English') {
+      greetingsCounter++;
+      return 'Hello ' + name;
+    } else if (!alreadyGreeted[inputString(name)] && language === 'Sotho') {
+      greetingsCounter++;
+      return 'Dumela ' + name;
+    }
+  }
+      
 
-            if (!inputString(name)) {
-              return 'Enter a valid name';}
-
-                if (!alreadyGreeted[name]) {
-                  alreadyGreeted[name] = true; 
-                  englishGreetings++;  
-                return 'Hello ' + name  
-              }
-            
-        }
-        function sothoGreet(name){
-          if (!inputString(name)) {
-            return 'Enter a valid name';}
-
-              if (!alreadyGreeted[name]) {
-                alreadyGreeted[name] = true; 
-                sothoGreetings++;  
-              return 'Dumela ' + name  
-            }
-        }
-    
-        function getSwatiGreetings(){
-            return swatiGreetings
-        }
-
-        function getEnglishGreetings(){
-            return englishGreetings
-        }
-
-        function getSothoGreetings(){
-            return sothoGreetings
-        }
-        function getAllGreetings(){
-            allGreetings = sothoGreetings + swatiGreetings + englishGreetings;
-            return allGreetings;
+        function getCounter(){
+            return greetingsCounter
         }
         function reset(){
-            swatiGreetings = 0;
-            englishGreetings =0
-            sothoGreetings = 0;
-            allGreetings = 0
-            return swatiGreetings, englishGreetings, sothoGreetings 
+            greetingsCounter = 0;
+            alreadyGreeted = {};
+            return greetingsCounter, alreadyGreeted
             
         }
     return {
         inputString,
-        swatiGreet,
-        englishGreet,
-        sothoGreet,
-        getSwatiGreetings,
-        getEnglishGreetings,
-        getSothoGreetings,
-        getAllGreetings,
+        greetFunction,
+        getCounter,
         reset
     }
   }

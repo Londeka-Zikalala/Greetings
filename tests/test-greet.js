@@ -6,10 +6,13 @@ describe('The greetings function', function(){
         assert.equal(greeter.inputString(name), 'Londeka')
         assert.equal(greeter.inputString(invalid), false)
     })
+
     it('should capitalize the first letter of a string', function(){
         var greeter = Greeting();
         let name = 'londeka'
+        let name2 = 'LONDEKA'
         assert.equal(greeter.inputString(name), 'Londeka')
+        assert.equal(greeter.inputString(name2), 'Londeka')
     })
     it('should greet any name in Swati', function(){
         var greeter = Greeting();
@@ -33,10 +36,11 @@ describe('The greetings function', function(){
         assert.equal(greeter.englishGreet('Londeka'), 'Hello Londeka')
         assert.equal(greeter.englishGreet('Nate'), 'Hello Nate')
         assert.equal(greeter.englishGreet('Nsovo'), 'Hello Nsovo')
+
+    })
     })
 
    
-    })
 describe('greeting counters',function(){
     it('should not increment the counter if a name is greeted more than once for each language', function(){
         var greeter = Greeting();
