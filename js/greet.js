@@ -8,27 +8,34 @@ function Greeting() {
   }
 
   function greetedFunction(name) {
-    if (alreadyGreeted[inputString(name)]) {
-      return 'Already greeted ' + name;
-    } else {
-      alreadyGreeted[inputString(name)] = alreadyGreeted[inputString(name)] || {};
-      alreadyGreeted[inputString(name)] = true;
+    var transformedName = inputString(name);
+    if (!alreadyGreeted[transformedName]) {
+      alreadyGreeted[transformedName] = true;
       greetingsCounter++;
-      return false;
     }
+    return !alreadyGreeted[transformedName];
   }
 
   function greetFunction(name, language) {
-    if (!inputString(name) || language === "") {
-      return 'Select a language and enter a valid name';
-    } else {
+    var transformedName = inputString(name);
+    if (!greetedFunction(transformedName)) {
       if (language === 'Swati') {
-        return 'Sawubona ' + name;
+        return 'Sawubona ' + transformedName;
       } else if (language === 'English') {
-        return 'Hello ' + name;
+        return 'Hello ' + transformedName;
       } else if (language === 'Sotho') {
-        return 'Dumela ' + name;
+        return 'Dumela ' + transformedName;
       }
+    }
+  }
+
+  function errorMessages(name, language) {
+    var transformedName = inputString(name);
+    if (!transformedName || language === '') {
+      return 'Select a language and enter a valid string';
+    } 
+    else {
+      return '';
     }
   }
 
@@ -39,7 +46,6 @@ function Greeting() {
   function reset() {
     greetingsCounter = 0;
     alreadyGreeted = {};
-    return greetingsCounter, alreadyGreeted;
   }
 
   return {
@@ -47,6 +53,7 @@ function Greeting() {
     greetedFunction,
     greetFunction,
     getCounter,
+    errorMessages,
     reset
   };
 }
