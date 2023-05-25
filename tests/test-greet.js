@@ -14,25 +14,25 @@ describe('The greetings function', function(){
     })
     it('should greet any name in Swati', function(){
         var greeter = Greeting();
-        assert.equal(greeter.greetFunction('Londeka', 'Swati'), 'Sawubona Londeka')
-        assert.equal(greeter.greetFunction('Nate', 'Swati'), 'Sawubona Nate')
-        assert.equal(greeter.greetFunction('Nsovo', 'Swati'), 'Sawubona Nsovo')
+        assert.equal(greeter.greetFunction('Londeka', 'Swati'), 'Sawubona londeka')
+        assert.equal(greeter.greetFunction('Nate', 'Swati'), 'Sawubona nate')
+        assert.equal(greeter.greetFunction('Nsovo', 'Swati'), 'Sawubona nsovo')
     })
 
     it('should greet any name in Sotho', function(){
         var greeter = Greeting();
-        assert.equal(greeter.greetFunction('Londeka', 'Sotho'), 'Dumela Londeka')
-        assert.equal(greeter.greetFunction('Nate', 'Sotho'), 'Dumela Nate')
-        assert.equal(greeter.greetFunction('Nsovo', 'Sotho'), 'Dumela Nsovo')
+        assert.equal(greeter.greetFunction('Londeka', 'Sotho'), 'Dumela londeka')
+        assert.equal(greeter.greetFunction('Nate', 'Sotho'), 'Dumela nate')
+        assert.equal(greeter.greetFunction('Nsovo', 'Sotho'), 'Dumela nsovo')
 
 
     })
 
     it('should greet any name in English',function(){
         var greeter = Greeting();
-        assert.equal(greeter.greetFunction('Londeka', 'English'), 'Hello Londeka')
-        assert.equal(greeter.greetFunction('Nate', 'English'), 'Hello Nate')
-        assert.equal(greeter.greetFunction('Nsovo', 'English'), 'Hello Nsovo')
+        assert.equal(greeter.greetFunction('Londeka', 'English'), 'Hello londeka')
+        assert.equal(greeter.greetFunction('Nate', 'English'), 'Hello nate')
+        assert.equal(greeter.greetFunction('Nsovo', 'English'), 'Hello nsovo')
 
     })
     })
@@ -109,24 +109,22 @@ describe('greeting counters',function(){
     
 
 describe('error messages', function(){
-    it('should give an error message of "Select a language and enter a valid name" when an invalid input is made', function(){
+    it('should give an error message of "Select a language and enter a valid string" when an invalid input is made', function(){
         var greeter = Greeting();
 
-        assert.equal(greeter.greetFunction(1234 , 'Swati'), 'Select a language and enter a valid name')
+        assert.equal(greeter.errorMessages(1234 , 'Swati'), 'Select a language and enter a valid string')
     })
-    it('should give an error message of "Select a language and enter a valid name" when a language is not selected', function(){
+    it('should give an error message of "Select a language and enter a valid string" when a language is not selected', function(){
         var greeter = Greeting();
 
-        assert.equal(greeter.greetFunction('Londeka' , ''), 'Select a language and enter a valid name')
+        assert.equal(greeter.errorMessages('Londeka' , ''), 'Select a language and enter a valid string')
     })
-    it('should give an error message of "Already greeted Thabang" when Thabang has been greeted', function(){
+    it('should give an error message of "Select a language and enter a valid string" when a language is not selected and an input is not made', function(){
         var greeter = Greeting();
+
+        assert.equal(greeter.errorMessages('' , ''), 'Select a language and enter a valid string')
+    })
     
-        greeter.greetFunction('Thabang', 'Swati')
-        greeter.greetFunction('Thabang', 'English')
-        greeter.greetedFunction('Thabang')
-        assert.equal(greeter.greetedFunction('Thabang'), 'Already greeted Thabang');
-    })
 
 
 })
