@@ -28,16 +28,20 @@ function greetDOM() {
     setTimeout(function () {
       errorMessageElement.style.display = 'none';
     }, 2000);
+    inputTextElement.value = '';
+    greetMessageElement.innerHTML = '';
     return;
   }
   const repeatedName = greet.greetedFunction(name); 
-  
+
   if (repeatedName) {
     errorMessageElement.innerHTML = 'Already greeted ' + name;
     errorMessageElement.style.display = 'block';
     setTimeout(function () {
       errorMessageElement.style.display = 'none';
     }, 2000);
+    inputTextElement.value = '';
+    greetMessageElement.innerHTML = '';
     return;
   }
 
