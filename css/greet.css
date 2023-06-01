@@ -2,110 +2,115 @@ html,
 body {
   height: 100%;
   width: 100%;
-  padding: 5%;
-  margin: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+  margin:0;
   font-size: 100%;
+  overflow: hidden; 
 }
 
 .container {
-    width: 100%;
-    height: 100%;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: floralwhite;
-   
+  width: 100%;
+  height: 90%;
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: floralwhite;
 }
-  
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10;
-    margin-left: 20%;
-    padding: 10%;
-  }
-  
-  .col-2 {
-    width: 100%;
-    padding: 1%;
 
-  }
-  a{
-    text-decoration: none;
-    color: burlywood;
-  }
-  /* Add any additional CSS styles for other elements as needed */
-  
-
-    .button-primary,
-    input[type="text"].button-primary,
-    input[type="button"].button-primary {
-      color: #FFF;
-      background-color: orangered;
-      border-color: orange; 
-      border-radius: 1em;
-    
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px; 
+  margin-left: 20px; 
+  padding: 10px; 
 }
-.buttons{
+
+.col-2 {
+  width: 100%;
+  padding: 1%;
+}
+
+a {
+  text-decoration: none;
+  color: burlywood;
+}
+
+.button-primary,
+input[type="text"].button-primary,
+input[type="button"].button-primary {
+  color: #fff;
+  background-color: orangered;
+  border-color: orange;
+  border-radius: 1em;
+}
+
+.buttons {
   margin-left: 15%;
 }
-.errorMessage{
-    color:red
 
+.errorMessage {
+  color: red;
 }
 
-.message{
-    color: darkslategrey;
+.message {
+  color: darkslategrey;
 }
 
-.languages{
-    display: inline-flex;
-    margin: 2%;
+.languages {
+  display: inline-flex;
+  margin: 2%;
 }
 
-/*SMALL SCREENS*/
+.alert {
+  display: none;
+  color: green;
+  margin-top: 10px; 
+}
 
-
+/* Small screens */
 @media only screen and (max-width: 34em) {
   html,
-body {
-  height: 100%;
-  width: 100%;
-  padding:0;
-  margin:0;
-  font-size: 100%;
+  body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .col-2 {
+    max-width: 90%;
+  }
 }
-    .container {
-      width: 100%;
-      height: 100vh;
-    }
-    .col-2{
-        max-width: 90%;
-    }
+
+/* Medium screens */
+@media only screen and (min-width: 35em) {
+  .container {
+    max-width: 80%;
   }
 
-  /*MED SCREENS */
-  
-  @media only screen and (min-width: 35em) {
-    .container {
-      max-width: 80%
-    }
-    .col-2{
-        max-width: 90%;
-    }
+  .col-2 {
+    max-width: 90%;
   }
-  /*LARGE SCREENS*/
-  @media only screen and (min-width: 55em) {
-    .container {
-      max-width: 85%;
-    }
+}
 
-    .col-2{
-        max-width: 100%;
-    }
+/* Large screens */
+@media only screen and (min-width: 55em) {
+  .container {
+    max-width: 85%;
   }
-  
+
+  .col-2 {
+    max-width: 100%;
+  }
+}

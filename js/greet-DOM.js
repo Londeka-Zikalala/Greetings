@@ -6,6 +6,7 @@ const resetBtnElement = document.querySelector('.resetButton');
 const chooseLanguageElements = document.querySelectorAll('.chooseLanguageRadio');
 const greetMessageElement = document.querySelector('.message');
 const counterElement = document.querySelector('.counter');
+const alertElement = document.querySelector('.alert');
 
 // Call the factory function
 const greet = Greeting();
@@ -19,8 +20,6 @@ function greetDOM() {
     language = checkedRadioBtn.value;
   }
 
- 
-
   const errorMessage = greet.errorMessages(name, language);
   if (errorMessage) {
     errorMessageElement.innerHTML = errorMessage;
@@ -30,10 +29,11 @@ function greetDOM() {
     }, 2000);
     inputTextElement.value = '';
     greetMessageElement.innerHTML = '';
+    checkedRadioBtn.checked = false;
     return;
   }
-  const repeatedName = greet.greetedFunction(name); 
 
+  const repeatedName = greet.greetedFunction(name);
   if (repeatedName) {
     errorMessageElement.innerHTML = 'Already greeted ' + name;
     errorMessageElement.style.display = 'block';
@@ -42,6 +42,7 @@ function greetDOM() {
     }, 2000);
     inputTextElement.value = '';
     greetMessageElement.innerHTML = '';
+    checkedRadioBtn.checked = false;
     return;
   }
 
@@ -62,7 +63,7 @@ const storedGreetings = localStorage.getItem('greetings');
 if (storedGreetings) {
   const parsedGreetings = JSON.parse(storedGreetings);
   greet.greetingsCounter = parsedGreetings.greetingsCounter || 0;
-  counterElement.textContent = "Greetings: " + greet.getCounter(); // Updated to include "Greetings: "
+  counterElement.textContent = "Greetings: " + greet.getCounter();
 }
 
 greetBtnElement.addEventListener('click', greetDOM);
@@ -74,9 +75,16 @@ function theReset() {
   greetMessageElement.innerHTML = '';
   counterElement.innerHTML = 'Greetings: ' + 0;
   const checkedRadioBtn = document.querySelector("input[name='chooseLanguage']:checked");
-  if (checkedRadioBtn) {
+  if (checkedRadioBtn !== null) { // Check if checkedRadioBtn is not null
     checkedRadioBtn.checked = false;
   }
+
+  // Confirmation alert before resetting
+  const confirmReset = confirm("Are you sure you want to reset?");
+  if (confirmReset) {
+    alert("Counter has been reset successfully!");
+  }
 }
+
 
 resetBtnElement.addEventListener('click', theReset);
