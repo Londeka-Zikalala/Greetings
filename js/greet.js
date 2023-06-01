@@ -19,21 +19,14 @@ function Greeting() {
 
   function greetFunction(name, language) {
     var transformedName = inputString(name);
-    if (greetedFunction(transformedName)) {
-      if (language === 'Swati') {
+    if (language === 'Swati') {
         return 'Sawubona ' + transformedName;
       } else if (language === 'English') {
         return 'Hello ' + transformedName;
       } else if (language === 'Sotho') {
         return 'Dumela ' + transformedName;
       }
-    }else {
-      return ''
-  }
-}
-  
-  
-  
+    }
 
   function errorMessages(name, language) {
     var transformedName = inputString(name);
