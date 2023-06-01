@@ -12,13 +12,14 @@ function Greeting() {
     if (!alreadyGreeted[transformedName]) {
       alreadyGreeted[transformedName] = true;
       greetingsCounter++;
+      return false; 
     }
-    return !alreadyGreeted[transformedName];
+    return true; 
   }
 
   function greetFunction(name, language) {
     var transformedName = inputString(name);
-    if (!greetedFunction(transformedName)) {
+    if (greetedFunction(transformedName)) {
       if (language === 'Swati') {
         return 'Sawubona ' + transformedName;
       } else if (language === 'English') {
@@ -26,8 +27,13 @@ function Greeting() {
       } else if (language === 'Sotho') {
         return 'Dumela ' + transformedName;
       }
-    }
+    }else {
+      return ''
   }
+}
+  
+  
+  
 
   function errorMessages(name, language) {
     var transformedName = inputString(name);
