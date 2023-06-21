@@ -63,7 +63,7 @@ const storedGreetings = localStorage.getItem('greetings');
 if (storedGreetings) {
   const parsedGreetings = JSON.parse(storedGreetings);
   greet.greetingsCounter = parsedGreetings.greetingsCounter || 0;
-  counterElement.textContent = "Greetings: " + greet.getCounter();
+  counterElement.textContent = "Greetings: " +  greet.greetingsCounter;
 }
 
 greetBtnElement.addEventListener('click', greetDOM);
@@ -78,11 +78,12 @@ function theReset() {
   if (checkedRadioBtn !== null) { // Check if checkedRadioBtn is not null
     checkedRadioBtn.checked = false;
   }
-
+//reset local storage
+localStorage.clear();
   // Confirmation alert before resetting
   const confirmReset = confirm("Are you sure you want to reset?");
   if (confirmReset) {
-    alert("Counter has been reset successfully!");
+    alertElement.innerHTML = "Counter reset successful";
   }
 }
 

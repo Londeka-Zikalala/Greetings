@@ -30,11 +30,17 @@ function Greeting() {
 
   function errorMessages(name, language) {
     var transformedName = inputString(name);
-    if (!transformedName || language === '') {
-      return 'Select a language and enter a valid string (No numbers or charecters)';
+    if (!transformedName && language === "") {
+      return "Select a language and enter a valid string (No numbers or charecters)";
     } 
-    else {
-      return '';
+    else if(language === ""){
+      return "Please select a language";
+    }
+    else if(!transformedName){
+      return "Enter a valid string (No numbers or charecters)";
+    }
+    else{
+      return "";
     }
   }
 

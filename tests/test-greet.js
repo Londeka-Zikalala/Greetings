@@ -109,15 +109,15 @@ describe('greeting counters',function(){
     
 
 describe('error messages', function(){
-    it('should give an error message of "Select a language and enter a valid string(No numbers or charecters)" when an invalid input is made', function(){
+    it('should give an error message of "Enter a valid string(No numbers or charecters)" when an invalid input is made', function(){
         var greeter = Greeting();
 
-        assert.equal(greeter.errorMessages(1234 , 'Swati'), 'Select a language and enter a valid string (No numbers or charecters)')
+        assert.equal(greeter.errorMessages(1234 , 'Swati'), 'Enter a valid string (No numbers or charecters)')
     })
-    it('should give an error message of "Select a language and enter a valid string(No numbers or charecters)" when a language is not selected', function(){
+    it('should give an error message of "Please select a language" when a language is not selected', function(){
         var greeter = Greeting();
 
-        assert.equal(greeter.errorMessages('Londeka' , ''), 'Select a language and enter a valid string (No numbers or charecters)')
+        assert.equal(greeter.errorMessages('Londeka' , ''), 'Please select a language')
     })
     it('should give an error message of "Select a language and enter a valid string (No numbers or charecters)" when a language is not selected and an input is not made', function(){
         var greeter = Greeting();
