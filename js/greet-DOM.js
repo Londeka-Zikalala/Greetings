@@ -49,6 +49,7 @@ function greetDOM() {
   greetMessageElement.innerHTML = greet.greetFunction(name, language);
   counterElement.innerHTML = "Greetings: " + greet.getCounter();
   inputTextElement.value = '';
+  checkedRadioBtn.checked = false;
 
   // Update greeting counts in local storage
   const greetings = {
