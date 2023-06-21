@@ -74,12 +74,12 @@ input[type="button"].button-primary {
   .container {
     width: 85%;
     height: 40vh;
-    margin-inline: 35%;
+    margin-inline: 30%;
     margin-block: 5%;
   }
 
-  .col-2 {
-    width: 90%;
+  .col-2,.row {
+    max-width: 90%;
   }
 }
 
