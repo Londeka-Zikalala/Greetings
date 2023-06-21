@@ -72,6 +72,9 @@ if (storedGreetings) {
 greetBtnElement.addEventListener('click', greetDOM);
 
 function theReset() {
+  // Confirmation alert before resetting
+  const confirmReset = confirm("Are you sure you want to reset?");
+  if (confirmReset) {
   greet.reset();
   inputTextElement.value = '';
   errorMessageElement.style.display = 'none';
@@ -81,13 +84,8 @@ function theReset() {
   if (checkedRadioBtn !== null) { // Check if checkedRadioBtn is not null
     checkedRadioBtn.checked = false;
   }
-//reset local storage
-
-  // Confirmation alert before resetting
-  const confirmReset = confirm("Are you sure you want to reset?");
-  if (confirmReset) {
     alertElement.innerHTML = "Counter reset successful";
-    localStorage.clear();
+    localStorage.clear();//reset local storage
   }
 }
 
