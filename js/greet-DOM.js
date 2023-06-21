@@ -79,11 +79,12 @@ function theReset() {
     checkedRadioBtn.checked = false;
   }
 //reset local storage
-localStorage.clear();
+
   // Confirmation alert before resetting
   const confirmReset = confirm("Are you sure you want to reset?");
   if (confirmReset) {
     alertElement.innerHTML = "Counter reset successful";
+    localStorage.clear();
   }
 }
 
